@@ -3,13 +3,20 @@ import { useRouter } from 'next/router';
 
 export default function Login() {
   const router = useRouter();
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   function handleSubmit(e) {
     e.preventDefault();
-    // Connexion instantanée sans vérifier Supabase
-    router.replace('/dashboard');
+    
+    // Le mot de passe unique partagé entre toi et Pau
+    if (password === 'Pau-remolinsbitem') {
+      // On stocke un petit jeton local pour dire que vous êtes connectés
+      localStorage.setItem('isLoggedIn', 'true');
+      router.replace('/dashboard');
+    } else {
+      setError("Mot de passe incorrect.");
+    }
   }
 
   return (
@@ -23,15 +30,19 @@ export default function Login() {
         </div>
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-6 shadow-2xl">
           <div className="font-display font-bold text-lg uppercase mb-1">Inici de sessió</div>
-          <p className="text-sm text-inksoft mb-5">Accés direct de test.</p>
+          <p className="text-sm text-inksoft mb-5">Accés reservat a l'equip mèdic.</p>
           <div className="field">
-            <label className="label">Correu electrònic</label>
-            <input className="input" type="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="alexis@club.cat" />
+            <label className="label">Mot de passe du club</label>
+            <input 
+              className="input" 
+              type="password" 
+              required 
+              value={password} 
+              onChange={e => setPassword(e.target.value)} 
+              placeholder="••••••••" 
+            />
           </div>
-          <div className="field">
-            <label className="label">Contrasenya</label>
-            <input className="input" type="password" required value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" />
-          </div>
+          {error && <div className="text-sm text-danger font-semibold mb-3 mt-2">{error}</div>}
           <button type="submit" className="btn btn-primary btn-block mt-4">
             Entrar
           </button>
