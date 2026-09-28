@@ -20,19 +20,9 @@ export default function Login() {
     setError('');
     setLoading(true);
 
-    // --- DÉBUT DU PASSE-DROIT EN DUR ---
-    const estPau = email.trim() === 'pauduran1234@gmail.com' && password === 'Pau-remolinsbitem';
-    const estAlexis = email.trim().toLowerCase() === 'alexis.boilot@orange.fr' && password === 'Ophelie-63';
-
-    if (estPau || estAlexis) {
-      setLoading(false);
-      router.replace('/dashboard'); // Ouvre les portes de force
-      return;
-    }
-    // --- FIN DU PASSE-DROIT EN DUR ---
-
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     setLoading(false);
+    
     if (error) {
       setError("Credencials incorrectes. Comprova el teu correu i la contrasenya.");
       return;
@@ -72,4 +62,3 @@ export default function Login() {
     </div>
   );
 }
-
