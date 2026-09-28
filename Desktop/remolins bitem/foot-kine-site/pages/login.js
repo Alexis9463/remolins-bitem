@@ -15,7 +15,7 @@ export default function Login() {
     });
   }, [router]);
 
-  async function handleSubmit(e) {
+    async function handleSubmit(e) {
     e.preventDefault();
     setError('');
     setLoading(true);
@@ -27,6 +27,7 @@ export default function Login() {
       setError("Credencials incorrectes. Comprova el teu correu i la contrasenya.");
       return;
     }
+    // Force la redirection directe vers ton tableau de bord en ligne
     router.replace('/dashboard');
   }
 
