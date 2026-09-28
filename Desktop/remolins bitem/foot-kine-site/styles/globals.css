@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body { @apply bg-canvas text-ink; }
+  body { font-family: 'Inter', sans-serif; }
+  h1,h2,h3,.font-display { font-family: 'Big Shoulders Display', sans-serif; }
+}
+
+@layer components {
+  .btn { @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition active:scale-[0.97] whitespace-nowrap; }
+  .btn-primary { @apply bg-tape text-white hover:bg-tapedark; }
+  .btn-secondary { @apply bg-white border border-line text-ink hover:bg-surface2; }
+  .btn-danger { @apply bg-dangerlight text-danger hover:bg-danger hover:text-white; }
+  .btn-ghost { @apply text-inksoft hover:bg-surface2 hover:text-ink; }
+  .btn-sm { @apply px-3 py-1.5 text-xs rounded-md; }
+  .btn-block { @apply w-full justify-center; }
+  .icon-btn { @apply w-8 h-8 rounded-md border border-line bg-white flex items-center justify-center text-inksoft hover:bg-surface2 hover:text-ink; }
+  .card { @apply bg-white border border-line rounded-xl2 p-4; }
+  .badge { @apply inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide; }
+  .badge-dot { @apply w-1.5 h-1.5 rounded-full bg-current; }
+  .badge-ok { @apply bg-okbg text-oktext; }
+  .badge-warn { @apply bg-amberlight text-amber; }
+  .badge-danger { @apply bg-dangerlight text-danger; }
+  .badge-blue { @apply bg-bluelight text-blue; }
+  .badge-grey { @apply bg-surface2 text-inksoft; }
+  .badge-purple { @apply bg-purplelight text-purple; }
+  .badge-pink { @apply bg-pinklight text-pink; }
+  .badge-green { @apply bg-greenlight text-green; }
+  .input, select.input, textarea.input { @apply w-full px-3 py-2 border border-line rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-tape focus:border-tape; }
+  .label { @apply block text-xs font-bold text-inksoft uppercase tracking-wide mb-1.5; }
+  .field { @apply mb-3.5; }
+  .jersey { @apply flex items-center justify-center flex-shrink-0 rounded-lg bg-pitch text-white font-display font-extrabold; width:40px; height:40px; font-size:16px; }
+  .jersey-sm { @apply flex items-center justify-center flex-shrink-0 rounded-md bg-pitch text-white font-display font-extrabold; width:30px; height:30px; font-size:13px; }
+  .jersey-xl { @apply flex items-center justify-center flex-shrink-0 rounded-xl2 bg-pitch text-white font-display font-extrabold; width:60px; height:60px; font-size:24px; }
+  .section-title { @apply font-display font-bold text-base uppercase tracking-wide mb-3 flex items-center gap-2; }
+  .subtab { @apply px-3.5 py-2 font-semibold text-sm text-inksoft cursor-pointer border-b-2 border-transparent whitespace-nowrap; }
+  .subtab-active { @apply text-pitch border-tape; }
+  .tl-item { @apply border border-line rounded-lg p-3.5 mb-2.5 bg-white; }
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #B9C9DE; border-radius: 8px; }
