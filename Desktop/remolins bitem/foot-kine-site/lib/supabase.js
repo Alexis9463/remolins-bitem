@@ -1,14 +1,6 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js'
 
-const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabaseUrl = 'https://bogdydsxpvwlvuzjuhci.supabase.co/rest/v1/'
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJvZ2R5ZHN4cHZ3bHZ1emp1aGNpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2MjAxOTksImV4cCI6MjEwNjE5NjE5OX0.HsNSN_yCfsEl4MZgqgwTGFh3_TWORe2IAXHJlfQzH0Q'
 
-if (!url || !anonKey) {
-  // Ne bloque pas le build, mais avertit clairement en dev/console.
-  // eslint-disable-next-line no-console
-  console.warn(
-    "Variables NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY manquantes. Copiez .env.local.example vers .env.local et renseignez-les."
-  );
-}
-
-export const supabase = createClient(url || 'https://placeholder.supabase.co', anonKey || 'placeholder');
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
